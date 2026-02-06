@@ -3,7 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { AnalyticsProvider } from "@/components/analytics-provider";
-// We'll create this
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Update",
@@ -29,6 +29,7 @@ html {
       </head>
       <body>
         <AnalyticsProvider>{children}</AnalyticsProvider>
+        <Toaster />
       </body>
     </html>
   );

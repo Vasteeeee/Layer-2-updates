@@ -1,7 +1,9 @@
 "use client";
 import type React from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import Image from "next/image";
 
 export const TrustWalletIcon = () => (
@@ -190,19 +192,464 @@ const PhantomIcon = () => (
     ></path>
   </svg>
 );
+
+const LedgerIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="currentColor"
+      d="M0 11.59h8.41V20H0zM0 0h2.46v9.13H0zm4.92 0h9.13v2.46H4.92zM11.59 4.92H20V20h-8.41z"
+    ></path>
+  </svg>
+);
+
+const RainbowIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#FF4500"
+      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8z"
+    ></path>
+  </svg>
+);
+
+const SafeIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#12FF80"
+      d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"
+    ></path>
+  </svg>
+);
+
+const ArgentIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#FF875B"
+      d="M12 2L3 7v10c0 5.5 3.8 10.7 9 12c5.2-1.3 9-6.5 9-12V7l-9-5z"
+    ></path>
+  </svg>
+);
+
+const ZerionIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#2962FF"
+      d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2z"
+    ></path>
+  </svg>
+);
+
+const ExodusIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#0B46F9"
+      d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"
+    ></path>
+  </svg>
+);
+
+const MathWalletIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#000000"
+      d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"
+    ></path>
+  </svg>
+);
+
+const BitKeepIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#8C01FA"
+      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"
+    ></path>
+  </svg>
+);
+
+const CoinomiIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#00A0E9"
+      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"
+    ></path>
+  </svg>
+);
+
+const Crypto1InchIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#94A6C3"
+      d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2z"
+    ></path>
+  </svg>
+);
+
+const TokenPocketIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#2980FE"
+      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"
+    ></path>
+  </svg>
+);
+
+const ImTokenIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#11C4D1"
+      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"
+    ></path>
+  </svg>
+);
+
+const KeplrIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#6C4FFF"
+      d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"
+    ></path>
+  </svg>
+);
+
+const BraveIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#FB542B"
+      d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"
+    ></path>
+  </svg>
+);
+
+const TrezorIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="3em"
+    height="3em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="#0F6148"
+      d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"
+    ></path>
+  </svg>
+);
+
+const AtomicIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#2A5ADA" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const SafePalIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#4A5BDA" d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"></path>
+  </svg>
+);
+
+const MyEtherWalletIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#05C0A5" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const ElectrumIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#3375BB" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const BlockchainComIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#121D33" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const CryptoComIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#002D74" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const GuardaIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#2B78FF" d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"></path>
+  </svg>
+);
+
+const AlphaWalletIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#3773F5" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const RabbyIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#8697FF" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const FrameIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#000000" d="M4 4h16v16H4z"></path>
+  </svg>
+);
+
+const CosmostationIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#6C4FFF" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const LeapIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#CF4420" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const SolflareIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#FC541C" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const SlopeIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#6E66FA" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const GlowIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#AB3BFF" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const XDEFIIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#1D1D1D" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const FrontierIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#CC703C" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const SequenceIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#6C5CE7" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const VenlyIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#4353FF" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const AmbireIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#7F5AF0" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const OperaIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#FF1B2D" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const EdgeIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#0E2247" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const JaxxIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#3F4145" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const StatusIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#5B6DEE" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const PillarIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#00BFFF" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const MyCryptoIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#007896" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const KeepKeyIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#0C1B2E" d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"></path>
+  </svg>
+);
+
+const BitBoxIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#7C7C7C" d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"></path>
+  </svg>
+);
+
+const ColdcardIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#FF6B00" d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"></path>
+  </svg>
+);
+
+const EllipalIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#14B75A" d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V7l-10-5z"></path>
+  </svg>
+);
+
+const EnginIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#7866D5" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const TorusIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#0364FF" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const OntoIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#00BFFF" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const KuCoinIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#24AE8F" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const BybitIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#F7A600" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const GateIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#17E3A0" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const HuobiIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#2E76DA" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const TallyIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#D08E39" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
+const MagicIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
+    <path fill="#6851FF" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"></path>
+  </svg>
+);
+
 const wallets = [
   {
     name: "MetaMask",
     icon: MetamaskIcon,
     recommended: true,
-    bgColor: "from-orange-300 to-orange-500", // Lighter than original
+    bgColor: "from-orange-300 to-orange-500",
     src: "metamask.png",
   },
   {
     name: "Trust Wallet",
     icon: TrustWalletIcon,
     recommended: false,
-    bgColor: "from-gray-400 to-gray-200", // Whitesmoke equivalent
+    bgColor: "from-gray-400 to-gray-200",
     src: "trust.png",
   },
   {
@@ -216,7 +663,35 @@ const wallets = [
     name: "Coinbase Wallet",
     icon: CoinbaseIcon,
     recommended: false,
-    bgColor: "from-blue-300 to-blue-500", // Lighter than original
+    bgColor: "from-blue-300 to-blue-500",
+    src: "coinbase.png",
+  },
+  {
+    name: "Ledger",
+    icon: LedgerIcon,
+    recommended: false,
+    bgColor: "from-gray-800 to-gray-600",
+    src: "metamask.png",
+  },
+  {
+    name: "Rainbow",
+    icon: RainbowIcon,
+    recommended: false,
+    bgColor: "from-red-500 to-orange-500",
+    src: "trust.png",
+  },
+  {
+    name: "Safe",
+    icon: SafeIcon,
+    recommended: false,
+    bgColor: "from-green-400 to-green-600",
+    src: "phantom.png",
+  },
+  {
+    name: "Argent",
+    icon: ArgentIcon,
+    recommended: false,
+    bgColor: "from-orange-400 to-orange-600",
     src: "coinbase.png",
   },
   {
@@ -227,25 +702,375 @@ const wallets = [
     src: "okx.png",
   },
   {
+    name: "Zerion",
+    icon: ZerionIcon,
+    recommended: false,
+    bgColor: "from-blue-600 to-blue-800",
+    src: "metamask.png",
+  },
+  {
+    name: "Exodus",
+    icon: ExodusIcon,
+    recommended: false,
+    bgColor: "from-blue-700 to-purple-900",
+    src: "trust.png",
+  },
+  {
     name: "Uniswap Wallet",
     icon: UniswapIcon,
     recommended: false,
-    bgColor: "from-pink-100 to-pink-300", // Much lighter than original
+    bgColor: "from-pink-100 to-pink-300",
     src: "uniswap.png",
+  },
+  {
+    name: "Math Wallet",
+    icon: MathWalletIcon,
+    recommended: false,
+    bgColor: "from-gray-800 to-black",
+    src: "phantom.png",
+  },
+  {
+    name: "BitKeep",
+    icon: BitKeepIcon,
+    recommended: false,
+    bgColor: "from-purple-600 to-purple-800",
+    src: "coinbase.png",
   },
   {
     name: "Binance Wallet",
     icon: BinanceIcon,
     recommended: false,
-    bgColor: "from-yellow-800 to-black", // Much lighter than original
+    bgColor: "from-yellow-800 to-black",
     src: "binance.png",
+  },
+  {
+    name: "Coinomi",
+    icon: CoinomiIcon,
+    recommended: false,
+    bgColor: "from-blue-400 to-blue-600",
+    src: "okx.png",
+  },
+  {
+    name: "1inch Wallet",
+    icon: Crypto1InchIcon,
+    recommended: false,
+    bgColor: "from-gray-400 to-gray-600",
+    src: "metamask.png",
+  },
+  {
+    name: "TokenPocket",
+    icon: TokenPocketIcon,
+    recommended: false,
+    bgColor: "from-blue-500 to-blue-700",
+    src: "trust.png",
+  },
+  {
+    name: "imToken",
+    icon: ImTokenIcon,
+    recommended: false,
+    bgColor: "from-cyan-400 to-cyan-600",
+    src: "phantom.png",
   },
   {
     name: "WalletConnect",
     icon: WalletConnectIcon,
     recommended: false,
-    bgColor: "from-gray-300 to-gray-100", // Whitesmoke equivalent
+    bgColor: "from-gray-300 to-gray-100",
     src: "wallet-connect.png",
+  },
+  {
+    name: "Keplr",
+    icon: KeplrIcon,
+    recommended: false,
+    bgColor: "from-purple-500 to-purple-700",
+    src: "coinbase.png",
+  },
+  {
+    name: "Brave Wallet",
+    icon: BraveIcon,
+    recommended: false,
+    bgColor: "from-orange-500 to-red-600",
+    src: "okx.png",
+  },
+  {
+    name: "Trezor",
+    icon: TrezorIcon,
+    recommended: false,
+    bgColor: "from-green-600 to-green-800",
+    src: "metamask.png",
+  },
+  {
+    name: "Atomic Wallet",
+    icon: AtomicIcon,
+    recommended: false,
+    bgColor: "from-blue-600 to-blue-800",
+    src: "trust.png",
+  },
+  {
+    name: "SafePal",
+    icon: SafePalIcon,
+    recommended: false,
+    bgColor: "from-indigo-600 to-indigo-800",
+    src: "phantom.png",
+  },
+  {
+    name: "MyEtherWallet",
+    icon: MyEtherWalletIcon,
+    recommended: false,
+    bgColor: "from-teal-400 to-teal-600",
+    src: "coinbase.png",
+  },
+  {
+    name: "Electrum",
+    icon: ElectrumIcon,
+    recommended: false,
+    bgColor: "from-blue-500 to-blue-700",
+    src: "okx.png",
+  },
+  {
+    name: "Blockchain.com",
+    icon: BlockchainComIcon,
+    recommended: false,
+    bgColor: "from-gray-800 to-gray-900",
+    src: "metamask.png",
+  },
+  {
+    name: "Crypto.com",
+    icon: CryptoComIcon,
+    recommended: false,
+    bgColor: "from-blue-800 to-blue-950",
+    src: "trust.png",
+  },
+  {
+    name: "Guarda Wallet",
+    icon: GuardaIcon,
+    recommended: false,
+    bgColor: "from-blue-500 to-blue-700",
+    src: "phantom.png",
+  },
+  {
+    name: "AlphaWallet",
+    icon: AlphaWalletIcon,
+    recommended: false,
+    bgColor: "from-blue-600 to-blue-800",
+    src: "coinbase.png",
+  },
+  {
+    name: "Rabby Wallet",
+    icon: RabbyIcon,
+    recommended: false,
+    bgColor: "from-indigo-400 to-indigo-600",
+    src: "okx.png",
+  },
+  {
+    name: "Frame",
+    icon: FrameIcon,
+    recommended: false,
+    bgColor: "from-gray-800 to-black",
+    src: "metamask.png",
+  },
+  {
+    name: "Cosmostation",
+    icon: CosmostationIcon,
+    recommended: false,
+    bgColor: "from-purple-600 to-purple-800",
+    src: "trust.png",
+  },
+  {
+    name: "Leap Wallet",
+    icon: LeapIcon,
+    recommended: false,
+    bgColor: "from-orange-600 to-red-700",
+    src: "phantom.png",
+  },
+  {
+    name: "Solflare",
+    icon: SolflareIcon,
+    recommended: false,
+    bgColor: "from-orange-500 to-orange-700",
+    src: "coinbase.png",
+  },
+  {
+    name: "Slope",
+    icon: SlopeIcon,
+    recommended: false,
+    bgColor: "from-purple-500 to-purple-700",
+    src: "okx.png",
+  },
+  {
+    name: "Glow",
+    icon: GlowIcon,
+    recommended: false,
+    bgColor: "from-purple-600 to-purple-800",
+    src: "metamask.png",
+  },
+  {
+    name: "XDEFI Wallet",
+    icon: XDEFIIcon,
+    recommended: false,
+    bgColor: "from-gray-800 to-gray-950",
+    src: "trust.png",
+  },
+  {
+    name: "Frontier",
+    icon: FrontierIcon,
+    recommended: false,
+    bgColor: "from-orange-700 to-orange-900",
+    src: "phantom.png",
+  },
+  {
+    name: "Sequence",
+    icon: SequenceIcon,
+    recommended: false,
+    bgColor: "from-purple-600 to-purple-800",
+    src: "coinbase.png",
+  },
+  {
+    name: "Venly",
+    icon: VenlyIcon,
+    recommended: false,
+    bgColor: "from-indigo-600 to-indigo-800",
+    src: "okx.png",
+  },
+  {
+    name: "Ambire Wallet",
+    icon: AmbireIcon,
+    recommended: false,
+    bgColor: "from-purple-700 to-purple-900",
+    src: "metamask.png",
+  },
+  {
+    name: "Opera Wallet",
+    icon: OperaIcon,
+    recommended: false,
+    bgColor: "from-red-600 to-red-800",
+    src: "trust.png",
+  },
+  {
+    name: "Edge Wallet",
+    icon: EdgeIcon,
+    recommended: false,
+    bgColor: "from-blue-900 to-blue-950",
+    src: "phantom.png",
+  },
+  {
+    name: "Jaxx Liberty",
+    icon: JaxxIcon,
+    recommended: false,
+    bgColor: "from-gray-700 to-gray-900",
+    src: "coinbase.png",
+  },
+  {
+    name: "Status",
+    icon: StatusIcon,
+    recommended: false,
+    bgColor: "from-indigo-600 to-indigo-800",
+    src: "okx.png",
+  },
+  {
+    name: "Pillar Wallet",
+    icon: PillarIcon,
+    recommended: false,
+    bgColor: "from-cyan-500 to-cyan-700",
+    src: "metamask.png",
+  },
+  {
+    name: "MyCrypto",
+    icon: MyCryptoIcon,
+    recommended: false,
+    bgColor: "from-teal-700 to-teal-900",
+    src: "trust.png",
+  },
+  {
+    name: "KeepKey",
+    icon: KeepKeyIcon,
+    recommended: false,
+    bgColor: "from-gray-800 to-gray-950",
+    src: "phantom.png",
+  },
+  {
+    name: "BitBox",
+    icon: BitBoxIcon,
+    recommended: false,
+    bgColor: "from-gray-600 to-gray-800",
+    src: "coinbase.png",
+  },
+  {
+    name: "Coldcard",
+    icon: ColdcardIcon,
+    recommended: false,
+    bgColor: "from-orange-600 to-orange-800",
+    src: "okx.png",
+  },
+  {
+    name: "Ellipal",
+    icon: EllipalIcon,
+    recommended: false,
+    bgColor: "from-green-500 to-green-700",
+    src: "metamask.png",
+  },
+  {
+    name: "Enjin Wallet",
+    icon: EnginIcon,
+    recommended: false,
+    bgColor: "from-purple-600 to-purple-800",
+    src: "trust.png",
+  },
+  {
+    name: "Torus",
+    icon: TorusIcon,
+    recommended: false,
+    bgColor: "from-blue-600 to-blue-800",
+    src: "phantom.png",
+  },
+  {
+    name: "Onto Wallet",
+    icon: OntoIcon,
+    recommended: false,
+    bgColor: "from-cyan-500 to-cyan-700",
+    src: "coinbase.png",
+  },
+  {
+    name: "KuCoin Wallet",
+    icon: KuCoinIcon,
+    recommended: false,
+    bgColor: "from-green-500 to-green-700",
+    src: "okx.png",
+  },
+  {
+    name: "Bybit Wallet",
+    icon: BybitIcon,
+    recommended: false,
+    bgColor: "from-yellow-600 to-yellow-800",
+    src: "metamask.png",
+  },
+  {
+    name: "Gate.io Wallet",
+    icon: GateIcon,
+    recommended: false,
+    bgColor: "from-emerald-400 to-emerald-600",
+    src: "trust.png",
+  },
+  {
+    name: "Huobi Wallet",
+    icon: HuobiIcon,
+    recommended: false,
+    bgColor: "from-blue-700 to-blue-900",
+    src: "phantom.png",
+  },
+  {
+    name: "Tally Ho",
+    icon: TallyIcon,
+    recommended: false,
+    bgColor: "from-orange-700 to-orange-900",
+    src: "coinbase.png",
+  },
+  {
+    name: "Magic",
+    icon: MagicIcon,
+    recommended: false,
+    bgColor: "from-purple-700 to-purple-900",
+    src: "okx.png",
   },
 ];
 
@@ -266,45 +1091,124 @@ export function WalletList({
   onWalletSelect,
   disabled = false,
 }: WalletListProps) {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Filter wallets based on search query
+  const filteredWallets = wallets.filter((wallet) =>
+    wallet.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div className="w-full h-full sm:w-80 bg-black/60 p-3 sm:p-6 border-b sm:border-b-0 sm:border-r border-gray-700">
-      <div>
-        <div className="grid grid-cols-2 sm:grid-cols-1 gap-2 sm:gap-3">
-          {wallets.map((wallet) => {
-            const IconComponent = wallet.icon;
-            return (
-              <Button
-                key={wallet.name}
-                variant="ghost"
-                className="w-full justify-start p-2 sm:p-3 h-auto text-left hover:bg-gray-800/50 group"
-                onClick={() => onWalletSelect(wallet)}
-                disabled={disabled}
+    <div className="w-full h-full sm:w-80 bg-black/60 border-b sm:border-b-0 sm:border-r border-gray-700 flex flex-col">
+      <div className="p-3 sm:p-6 pb-2 sm:pb-3 border-b border-gray-700/50">
+        <h2 className="text-white font-semibold text-lg">Select Wallet</h2>
+        <p className="text-gray-400 text-xs mt-1 mb-3">Choose your preferred wallet to connect</p>
+        
+        {/* Search Input */}
+        <div className="relative">
+          <svg
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+          <Input
+            type="text"
+            placeholder="Search wallets..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10 bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+              aria-label="Clear search"
+            >
+              <svg
+                className="w-4 h-4"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <div className="flex flex-col sm:flex-row items-center sm:items-center gap-1 sm:gap-3 w-full">
-                  <div
-                    className={`w-7 h-7 bg-linear-to-br ${wallet.bgColor} rounded-lg flex items-center justify-center p-1`}
-                  >
-                    {/* <IconComponent /> */}
-                    <Image
-                      src={wallet.src}
-                      alt="Crypto"
-                      width="80"
-                      height="80"
-                    />
-                  </div>
-                  <span className="text-white group-hover:text-gray-200 text-xs text-center sm:text-left">
-                    {wallet.name}
-                  </span>
-                  {wallet.recommended && (
-                    <Badge className="sm:ml-auto bg-green-600 hover:bg-green-600 text-white text-[10px] sm:text-xs px-1 sm:px-2 py-0.5">
-                      RECOMMENDED
-                    </Badge>
-                  )}
-                </div>
-              </Button>
-            );
-          })}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          )}
         </div>
+      </div>
+      <div className="flex-1 overflow-y-auto p-3 sm:p-6 pt-3">
+        {filteredWallets.length > 0 ? (
+          <div className="grid grid-cols-2 sm:grid-cols-1 gap-2 sm:gap-3">
+            {filteredWallets.map((wallet) => {
+              const IconComponent = wallet.icon;
+              return (
+                <Button
+                  key={wallet.name}
+                  variant="ghost"
+                  className="w-full justify-start p-2 sm:p-3 h-auto text-left hover:bg-gray-800/50 group transition-all duration-200"
+                  onClick={() => onWalletSelect(wallet)}
+                  disabled={disabled}
+                >
+                  <div className="flex flex-col sm:flex-row items-center sm:items-center gap-1 sm:gap-3 w-full">
+                    <div
+                      className={`w-7 h-7 bg-gradient-to-br ${wallet.bgColor} rounded-lg flex items-center justify-center p-1 shadow-lg group-hover:scale-110 transition-transform duration-200`}
+                    >
+                      <Image
+                        src={wallet.src}
+                        alt={wallet.name}
+                        width="80"
+                        height="80"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <span className="text-white group-hover:text-gray-200 text-xs text-center sm:text-left font-medium">
+                      {wallet.name}
+                    </span>
+                    {wallet.recommended && (
+                      <Badge className="sm:ml-auto bg-green-600 hover:bg-green-600 text-white text-[10px] sm:text-xs px-1 sm:px-2 py-0.5 whitespace-nowrap">
+                        RECOMMENDED
+                      </Badge>
+                    )}
+                  </div>
+                </Button>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-8 text-center">
+            <svg
+              className="w-12 h-12 text-gray-600 mb-3"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <p className="text-gray-400 text-sm">No wallets found</p>
+            <p className="text-gray-500 text-xs mt-1">Try a different search term</p>
+          </div>
+        )}
       </div>
     </div>
   );
